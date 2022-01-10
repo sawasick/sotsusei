@@ -36,7 +36,7 @@ const $elem = `
   </div>
 </nav>
 <!-- Calibration points -->
-<div class="calibrationDiv">
+<div id="calibrationDiv">
   <input type="button" class="Calibration" id="Pt1"></input>
   <input type="button" class="Calibration" id="Pt2"></input>
   <input type="button" class="Calibration" id="Pt3"></input>

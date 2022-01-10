@@ -43,6 +43,7 @@ $(document).ready(function(){
   ClearCanvas();
   // helpModalShow();
   $('#helpModal').modal('show');
+  $('body').addClass('is-hidden');
      $(".Calibration").click(function(){ // click event on the calibration buttons
 
       var id = $(this).attr('id');
@@ -107,7 +108,8 @@ $(document).ready(function(){
                           if (isConfirm){
                             //clear the calibration & hide the last middle button
                             ClearCanvas();
-                            document.getElementById('box-wrapper').classList.remove('is-hide');
+                            document.getElementsByTagName('body')[0].classList.remove('is-hidden');
+                            document.getElementById('calibrationDiv').classList.add('is-hide');
                             $('body').append(`<script src="tile.js"></script>`);
                           } else {
                             //use restart function to restart the calibration
