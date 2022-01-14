@@ -120,7 +120,7 @@ $(document).ready(function(){
                 document.getElementsByTagName('body')[0].classList.remove('is-hidden');
                 document.getElementById('calibrationDiv').classList.add('is-hide');
               });
-              $('#js-pop-result-btn-confirm').on('click', function(){
+              $('#js-pop-result-btn-cancel').on('click', function(){
                 // 再キャリブレーション
                 document.getElementById("Accuracy").innerHTML = "<a>キャリブレーションは完了していません</a>";
                 webgazer.clearData();
