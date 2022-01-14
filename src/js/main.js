@@ -44,3 +44,20 @@ function Restart(){
     // PopUpInstruction();
     PopUpUsage();
 }
+
+// キャリブレーションを行わない
+function CancelCalibration() {
+  document.getElementById('Accuracy').textContent = "キャリブレーションは完了していません";
+  webgazer.clearData();
+  ClearCalibration();
+  
+  // カメラの停止
+  document.getElementById('webgazerVideoFeed').srcObject.getVideoTracks()[0].stop();
+  // 左上のカメラ表示要素の削除
+  document.getElementById('webgazerVideoContainer').remove();
+  document.getElementById('webgazerGazeDot').remove();
+  document.getElementById('calibrationDiv').remove();
+  document.getElementById('plotting_canvas').remove();
+  document.body.classList.remove('is-hidden');
+
+}

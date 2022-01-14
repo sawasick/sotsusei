@@ -28,7 +28,7 @@ const $elem = `
         <img src="../../image/calibration.png" width="100%" height="100%" alt="webgazer demo instructions">
       </div>
       <div class="modal-footer">
-        <button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+        <button id="closeBtn" type="button" class="btn btn-default" data-dismiss="modal" onclick="CancelCalibration()" disabled>閉じる</button>
         <button id="start_calibration" type="button" class="btn btn-primary" data-dismiss="modal" onclick="Restart()" disabled>始める</button>
       </div>
     </div>
