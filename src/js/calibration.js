@@ -117,7 +117,7 @@ $(document).ready(function(){
                 // キャリブレーション終了
                 ClearCanvas();
                 $('#js-pop-result').remove();
-                document.getElementsByTagName('body')[0].classList.remove('is-hidden');
+                document.body.classList.remove('is-hidden');
                 document.getElementById('calibrationDiv').classList.add('is-hide');
 
                 // 左上のカメラを非表示にする→削除するとトラッキングできなくなる
