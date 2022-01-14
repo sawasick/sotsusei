@@ -119,6 +119,12 @@ $(document).ready(function(){
                 $('#js-pop-result').remove();
                 document.getElementsByTagName('body')[0].classList.remove('is-hidden');
                 document.getElementById('calibrationDiv').classList.add('is-hide');
+
+                // 左上のカメラを非表示にする→削除するとトラッキングできなくなる
+                document.getElementById('webgazerVideoContainer').classList.add('is-hide--f');
+
+                // 視線ポインタを非表示にする
+                // document.getElementById('webgazerGazeDot').classList.add('is-hide--f');
               });
               $('#js-pop-result-btn-cancel').on('click', function(){
                 // 再キャリブレーション

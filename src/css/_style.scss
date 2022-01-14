@@ -15,7 +15,7 @@ button {
 }
 
 #webgazerVideoContainer {
-  display: block !important;
+  display: block;
   position: fixed !important;
   top: 0px !important;
   left: 0px !important;
@@ -148,4 +148,12 @@ li {
 
 .is-hidden {
   overflow: hidden;
+}
+
+.is-hide {
+  display: none;
+}
+
+.is-hide--f {
+  display: none !important;
 }
