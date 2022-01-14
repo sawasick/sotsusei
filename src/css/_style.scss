@@ -3,7 +3,7 @@ body {
 }
 
 button {
-  border-radius: 4px;
+  // border-radius: 4px;
 }
 
 /* Video Feed Styling */
@@ -26,33 +26,36 @@ button {
 
 /* Navbar styling */
 #webgazerNavbar {
+  // left: 320px;
+  // z-index: 0;
+  // box-shadow: 0px 3px 5px #ddd;
+  // border: 0px;
+  // background-color: #fff;
+}
+
+// #Accuracy a {
+//   background-color: #222;
+//   color: #eee;
+//   left: -15px;
+//   padding-left: 80px;
+//   padding-right: 40px;
+// }
+
+.Accuracy {
+  background-color: #222;
+  color: #fff;
+  position: fixed;
+  top: 0;
   left: 320px;
-  z-index: 0;
-  box-shadow: 0px 3px 5px #ddd;
-  border: 0px;
-  background-color: #fff;
 }
 
-#Accuracy a {
-  background-color: #222;
-  color: #eee;
-  left: -15px;
-  padding-left: 80px;
-  padding-right: 40px;
-}
+// li {
+//   padding-left: 50px;
+// }
 
-#Accuracy {
-  background-color: #222;
-  padding-left: inherit;
-}
-
-li {
-  padding-left: 50px;
-}
-
-.navbar-right li {
-  padding-right: 20px;
-}
+// .navbar-right li {
+//   padding-right: 20px;
+// }
 
 .helpBtn {
   padding: 15px;

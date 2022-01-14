@@ -5,36 +5,7 @@ const $elem = `
 
 <!-- TODO: 3.styleはclassで記述 -->
 <canvas id="plotting_canvas" width="500" height="500" style="cursor:crosshair;"></canvas>
-<nav id="webgazerNavbar" class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    <!-- The hamburger menu button -->
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar">Menu</span>
-      </button>
-    </div>
-    <div id="myNavbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <!-- Accuracy -->
-        <li id="Accuracy">
-          <a>Not yet Calibrated</a>
-        </li>
-        <li>
-          <a onclick="Restart()" href="#">Recalibrate</a>
-        </li>
-        <li>
-          <a onclick="webgazer.applyKalmanFilter(!webgazer.params.applyKalmanFilter)" href="#">Toggle Kalman Filter</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <button class="helpBtn" data-toggle="modal" data-target="#helpModal">
-            <a data-toggle="modal"><span class="glyphicon glyphicon-cog"></span> Help</a>
-          </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<p id="Accuracy" class="accuracy">キャリブレーションは完了していません</p>
 <!-- Calibration points -->
 <div id="calibrationDiv">
   <input type="button" class="Calibration" id="Pt1"></input>

@@ -38,7 +38,7 @@ window.onbeforeunload = function() {
  * Restart the calibration process by clearing the local storage and reseting the calibration point
  */
 function Restart(){
-    document.getElementById("Accuracy").innerHTML = "<a>Not yet Calibrated</a>";
+    document.getElementById("Accuracy").textContent = "キャリブレーションは完了していません";
     webgazer.clearData();
     ClearCalibration();
     // PopUpInstruction();

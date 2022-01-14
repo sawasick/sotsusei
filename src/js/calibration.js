@@ -100,8 +100,8 @@ $(document).ready(function(){
               stop_storing_points_variable(); // stop storing the prediction points
               var past50 = webgazer.getStoredPoints(); // retrieve the stored points
               var precision_measurement = calculatePrecision(past50);
-              var accuracyLabel = "<a>精度 | "+precision_measurement+"%</a>";
-              document.getElementById("Accuracy").innerHTML = accuracyLabel; // Show the accuracy in the nav bar.
+              var accuracyLabel = "精度 | "+precision_measurement+"%";
+              document.getElementById("Accuracy").textContent = accuracyLabel; // Show the accuracy in the nav bar.
 
               const $elem_result = `
               <div id="js-pop-result" class="pop-overlay">
@@ -128,7 +128,7 @@ $(document).ready(function(){
               });
               $('#js-pop-result-btn-cancel').on('click', function(){
                 // 再キャリブレーション
-                document.getElementById("Accuracy").innerHTML = "<a>キャリブレーションは完了していません</a>";
+                document.getElementById("Accuracy").textContent = "キャリブレーションは完了していません";
                 webgazer.clearData();
                 ClearCalibration();
                 ClearCanvas();
