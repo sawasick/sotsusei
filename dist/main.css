@@ -318,6 +318,9 @@ body {
     width: 300px;
   }
 }
+.pop-modal button:disabled {
+  opacity: 0.6;
+}
 .pop-title {
   color: #333;
   font-weight: bold;

@@ -50,6 +50,9 @@ function Restart(){
     // PopUpInstruction();
     PopUpUsage();
     CalibrationStart();
+
+    // モーダルの削除
+    document.getElementById('helpModal').remove();
 }
 
 // キャリブレーション中フラグを立てる
@@ -79,6 +82,9 @@ function CancelCalibration() {
   document.getElementById('calibrationDiv').remove();
   document.getElementById('plotting_canvas').remove();
   document.body.classList.remove('is-hidden');
+
+  // モーダルの削除
+  document.getElementById('helpModal').remove();
 }
 
 // 視線上(赤いドット)の要素を取得
