@@ -120,8 +120,14 @@ $(document).ready(function(){
                 document.body.classList.remove('is-hidden');
                 document.getElementById('calibrationDiv').classList.add('is-hide');
 
+                // キャリブレーション中のフラグをfalseにする
+                CalibrationEnd();
+
                 // 左上のカメラを非表示にする→削除するとトラッキングできなくなる
                 document.getElementById('webgazerVideoContainer').classList.add('is-hide--f');
+
+                // canvasを削除
+                document.getElementById('plotting_canvas').remove();
 
                 // 視線ポインタを非表示にする
                 // document.getElementById('webgazerGazeDot').classList.add('is-hide--f');
