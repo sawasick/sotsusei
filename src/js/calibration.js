@@ -45,8 +45,6 @@ function PopUpUsage() {
 */
 $(document).ready(function(){
   ClearCanvas();
-  // helpModalShow();
-  $('#helpModal').modal('show');
   $('body').addClass('is-hidden');
      $(".Calibration").click(function(){ // click event on the calibration buttons
 
