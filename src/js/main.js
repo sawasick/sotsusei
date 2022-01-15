@@ -8,8 +8,7 @@ window.onload = async function() {
         //.setTracker('clmtrackr')
         .setGazeListener(function(data, clock) {
           if(data != null && isCalibrate == false) {
-            // ActionToElement(GetElementOnGaze(data.x, data.y));
-            ActionToElement(data.x, data.y);
+            ActionToElement(GetElementOnGaze(data.x, data.y));
           }
             // console.log(data); /* data is an object containing an x and y key which are the x and y prediction coordinates (no bounds limiting) */
           //   console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
@@ -94,21 +93,25 @@ function GetElementOnGaze(x, y) {
 
 // 要素にアクションをする
 /* アクションしたい要素に'wg-target'属性を付与する */
-function ActionToElement(x, y) {
-  var elem = document.elementFromPoint(x, y);
+function ActionToElement(e) {
+  var elem = e;
   document.getElementById('GazingElement').textContent = '注視している要素 :'+elem;
   if (elem != null) {
     if (pElem == null) {
       pElem = elem;
     }
     // 注視している要素がアクション対象なら
-    if(elem.hasAttribute('wg-target')) {
+    // if(elem.hasAttribute('wg-target')) {
       elem.classList.add('action');
-    }
+    // }
 
     // 前フレームで見た要素と違うなら
     if (elem != pElem) {
       pElem.classList.remove('action');
+      // pElemのclassが1つもないならclass属性も削除
+      if (pElem.classList.length == 0) {
+        pElem.removeAttribute('class');
+      }
       pElem = elem;
     }
   }
