@@ -2,19 +2,7 @@ body {
   min-width: 600px !important;
 }
 
-button {
-  // border-radius: 4px;
-}
-
-/* Video Feed Styling */
-#overlay {
-  /* Video Feed Styling:
- * Include the !important keyword to override default styles applied by JS.
- * webgazer.js sets defaults for: display, position, top, left, width, height
- */
-}
-
-#webgazerVideoContainer {
+.webgazerVideoContainer {
   display: block;
   position: fixed !important;
   top: 0px !important;
@@ -24,83 +12,12 @@ button {
   z-index: 1;
 }
 
-/* Navbar styling */
-#webgazerNavbar {
-  // left: 320px;
-  // z-index: 0;
-  // box-shadow: 0px 3px 5px #ddd;
-  // border: 0px;
-  // background-color: #fff;
-}
-
-// #Accuracy a {
-//   background-color: #222;
-//   color: #eee;
-//   left: -15px;
-//   padding-left: 80px;
-//   padding-right: 40px;
-// }
-
-.debugInfo {
-  position: fixed;
-  top: 0;
-  left: 320px;
-  display: flex;
-  z-index: 99999;
-}
-.accuracy {
-  background-color: #222 !important;
-  color: #fff;
-  margin-right: 10px;
-}
-
-.status {
-  background-color: #222 !important;
-  color: #fff;
-  margin-right: 10px;
-}
-
-.gazing {
-  background-color: #222 !important;
-  color: #fff;
-}
-// li {
-//   padding-left: 50px;
-// }
-
-// .navbar-right li {
-//   padding-right: 20px;
-// }
-
-.helpBtn {
-  padding: 15px;
-  border: none;
-  background: none;
-  color: #777;
-}
-
-.helpBtn a {
-  background: none;
-  color: #777;
-}
-
-.helpBtn a:hover {
-  color: black !important;
-  text-decoration: none;
-}
-
-.modal-header {
-  border-bottom: none !important;
-}
-
-#calibrationDiv {
+.calibrationDiv {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  // z-index: 1000;
-  // background: rgba(0, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.4);
 }
 
@@ -108,8 +25,6 @@ button {
 .Calibration {
   width: 20px;
   height: 20px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
   border-radius: 25px;
   background-color: red;
   opacity: 0.2;
@@ -163,6 +78,32 @@ button {
   bottom: 2vw;
   right: 2vw;
 }
+
+/* デバッグ用の表示スタイル↓↓↓*/
+.debugInfo {
+  position: fixed;
+  top: 0;
+  left: 320px;
+  display: flex;
+  z-index: 99999;
+}
+.accuracy {
+  background-color: #222 !important;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.status {
+  background-color: #222 !important;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.gazing {
+  background-color: #222 !important;
+  color: #fff;
+}
+/* デバッグ用の表示スタイル↑↑↑*/
 
 .is-hidden {
   overflow: hidden;

@@ -9,7 +9,7 @@ const $elem = `
   <p id="GazingElement" class="gazing">注視している要素 : </p>
 </div>
 <!-- Calibration points -->
-<div id="calibrationDiv">
+<div id="calibrationDiv" class="calibrationDiv">
   <input type="button" class="Calibration" id="Pt1"></input>
   <input type="button" class="Calibration" id="Pt2"></input>
   <input type="button" class="Calibration" id="Pt3"></input>
