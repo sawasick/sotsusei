@@ -41,14 +41,29 @@ button {
 //   padding-right: 40px;
 // }
 
-.Accuracy {
-  background-color: #222;
-  color: #fff;
+.debugInfo {
   position: fixed;
   top: 0;
   left: 320px;
+  display: flex;
+  z-index: 99999;
+}
+.accuracy {
+  background-color: #222 !important;
+  color: #fff;
+  margin-right: 10px;
 }
 
+.status {
+  background-color: #222 !important;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.gazing {
+  background-color: #222 !important;
+  color: #fff;
+}
 // li {
 //   padding-left: 50px;
 // }
@@ -159,4 +174,8 @@ button {
 
 .is-hide--f {
   display: none !important;
+}
+
+.action {
+  background-color: #ffff00;
 }
