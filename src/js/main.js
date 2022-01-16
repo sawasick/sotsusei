@@ -1,6 +1,8 @@
 var isCalibrate = false;
 var isCalibrateComplete = false;
 var pElem; // 1フレーム前に注視していた要素
+const csvData = [];
+var csvDataTxt = '';
 window.onload = async function() {
 
     webgazer.params.showVideoPreview = true;
@@ -8,11 +10,14 @@ window.onload = async function() {
     await webgazer.setRegression('ridge') /* currently must set regression and tracker */
         //.setTracker('clmtrackr')
         .setGazeListener(function(data, clock) {
-          if(data != null && isCalibrate == false) {
-            ActionToElement(GetElementOnGaze(data.x, data.y));
+          // if(data != null && isCalibrate == false) {
+          //   ActionToElement(GetElementOnGaze(data.x, data.y));
+          // }
+          if(data != null && isCalibrateComplete == true) {
+            AddDataToCSV(data.x, data.y);
           }
             // console.log(data); /* data is an object containing an x and y key which are the x and y prediction coordinates (no bounds limiting) */
-          //   console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
+            // console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
         })
         .saveDataAcrossSessions(true)
         .begin();
@@ -30,7 +35,6 @@ window.onload = async function() {
         canvas.style.position = 'fixed';
     };
     setup();
-
 };
 
 // Set to true if you want to save the data even if you reload the page.
@@ -123,3 +127,36 @@ function ActionToElement(e) {
     }
   }
 }
+// csvData.push(['Accuracy']);
+// csvData.push(['posX']);
+// csvData.push(['posY']);
+/*
+csvData[0][0] →Accuracy
+csvData[0][1] → 精度の% →値代入はcalibration.jsで実行
+csvData[1][0] →x
+csvData[2][0] →y
+csvData[1][1] →10
+*/
+// console.log(csvData);
+function AddDataToCSV(x, y) {
+  // TODO:座標の数値を引数持ってくる
+  // csvData[0].push(x);
+  // csvData[1].push(y);
+  csvDataTxt += 'Now: '+new Date()+'x:'+ x +', y:'+ y +'| ';
+}
+
+
+window.addEventListener('beforeunload', function(e) {
+  // TODO:キャリブレーション完了してたら条件追加する
+  e.preventDefault();
+  const blob = new Blob([csvDataTxt],{type:"text/plain"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  document.body.appendChild(a);
+  a.download = 'test.txt';
+  a.href = url;
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+  // ページを閉じる・戻る前など遷移のタイミングで処理したいこと
+});
