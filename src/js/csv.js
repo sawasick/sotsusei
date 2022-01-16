@@ -53,3 +53,8 @@ function ClickDl(e) {
   a.remove();
   URL.revokeObjectURL(url);
 }
+
+window.addEventListener('beforeunload', function(e) {
+  e.preventDefault();
+  // ページを閉じる・戻る前など遷移のタイミングで処理したいこと
+});
