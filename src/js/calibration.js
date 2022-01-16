@@ -121,6 +121,9 @@ $(document).ready(function(){
                 // キャリブレーション中のフラグをfalseにする
                 CalibrationEnd();
 
+                // キャリブレーション完了フラグを立てる
+                CalibrationComplete();
+
                 // 左上のカメラを非表示にする→削除するとトラッキングできなくなる
                 document.getElementById('webgazerVideoContainer').classList.add('is-hide--f');
 
