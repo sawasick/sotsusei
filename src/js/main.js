@@ -1,4 +1,5 @@
 var isCalibrate = false;
+var isCalibrateComplete = false;
 var pElem; // 1フレーム前に注視していた要素
 window.onload = async function() {
 
@@ -64,6 +65,12 @@ function CalibrationStart() {
 function CalibrationEnd() {
   isCalibrate = false;
   document.getElementById('CalibrateStatus').textContent = "キャリブレーション中じゃない";
+}
+
+// キャリブレーション完了フラグを立てる
+function CalibrationComplete() {
+  isCalibrateComplete = true;
+  document.getElementById('CalibrateStatus').textContent = "キャリブレーション完了";
 }
 
 // キャリブレーションを行わない
