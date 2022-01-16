@@ -6,6 +6,7 @@ TempData.push(dayOfWeek);
 TempData.push(FUKTemp);
 TempData.push(KRMTemp);
 
+console.log(TempData);
 var str = "";
 var len_dayOfWeek =Object.keys(TempData[0]).length;
 for(var i = 0; i<len_dayOfWeek; i++){
@@ -34,7 +35,7 @@ for(var i=0; i<len_element-1; i++){ //観測地域数分ループ
   link.href = URL.createObjectURL(blob);
   link.download ="tempdate.csv";
   // link.click();
-  console.log('DO');
+  console.log(str);
 
 
 window.addEventListener('load', () => {

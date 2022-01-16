@@ -130,6 +130,9 @@ $(document).ready(function(){
                 // canvasを削除
                 document.getElementById('plotting_canvas').remove();
 
+                // 精度をcsvのための配列に格納
+                // csvData[0].push(precision_measurement);
+
                 // 視線ポインタを非表示にする
                 // document.getElementById('webgazerGazeDot').classList.add('is-hide--f');
               });
