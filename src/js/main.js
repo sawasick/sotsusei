@@ -2,7 +2,7 @@ var isCalibrate = false;
 var isCalibrateComplete = false;
 var pElem; // 1フレーム前に注視していた要素
 const csvData = [];
-var csvDataTxt = '';
+var startTime = null;
 window.onload = async function() {
 
     webgazer.params.showVideoPreview = true;
@@ -127,36 +127,35 @@ function ActionToElement(e) {
     }
   }
 }
-// csvData.push(['Accuracy']);
-// csvData.push(['posX']);
-// csvData.push(['posY']);
-/*
-csvData[0][0] →Accuracy
-csvData[0][1] → 精度の% →値代入はcalibration.jsで実行
-csvData[1][0] →x
-csvData[2][0] →y
-csvData[1][1] →10
-*/
-// console.log(csvData);
+
 function AddDataToCSV(x, y) {
-  // TODO:座標の数値を引数持ってくる
-  // csvData[0].push(x);
-  // csvData[1].push(y);
-  csvDataTxt += 'Now: '+new Date()+'x:'+ x +', y:'+ y +'| ';
+  csvData.push('\n'+Math.round(x)+','+Math.round(y));
 }
 
-
 window.addEventListener('beforeunload', function(e) {
+  // csvファイルをダウンロードする
   // TODO:キャリブレーション完了してたら条件追加する
   e.preventDefault();
-  const blob = new Blob([csvDataTxt],{type:"text/plain"});
+  // 閲覧時間をcsvの配列に格納
+  csvData.splice(2, 0, '\n'+(Date.now() - startTime));
+
+  /*
+  書き出すcsvの形式は下記
+  URL,
+  精度,
+  閲覧時間(msec),
+  posX,posY,
+  ...
+
+  このままだとカンマの後に空文字列が入るので行の末尾の要素を削除する処理をする→python側で実行
+  */
+  const blob = new Blob([csvData],{type:"text/csv"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   document.body.appendChild(a);
-  a.download = 'test.txt';
+  a.download = 'test.csv';
   a.href = url;
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
-  // ページを閉じる・戻る前など遷移のタイミングで処理したいこと
 });
