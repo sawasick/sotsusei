@@ -140,6 +140,9 @@ window.addEventListener('beforeunload', function(e) {
   // 閲覧時間をcsvの配列に格納
   csvData.splice(2, 0, '\n'+(Date.now() - startTime));
 
+  // EOFをcsvの配列に追記
+  csvData.push('\n'+'EOF');
+
   /*
   書き出すcsvの形式は下記
   URL,
@@ -148,6 +151,7 @@ window.addEventListener('beforeunload', function(e) {
   閲覧時間(msec),
   posX,posY,
   ...
+  EOF
 
   このままだとカンマの後に空文字列が入るので行の末尾の要素を削除する処理をする→python側で実行
   */
