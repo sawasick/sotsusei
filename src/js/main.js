@@ -14,7 +14,8 @@ window.onload = async function() {
           //   ActionToElement(GetElementOnGaze(data.x, data.y));
           // }
           if(data != null && isCalibrateComplete == true) {
-            AddDataToCSV(data.x, data.y);
+            AddDataToCSV(data.x + window.pageXOffset, data.y + window.pageYOffset);
+            // console.log(data.x, data.y);
           }
             // console.log(data); /* data is an object containing an x and y key which are the x and y prediction coordinates (no bounds limiting) */
             // console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
@@ -143,6 +144,8 @@ window.addEventListener('beforeunload', function(e) {
   書き出すcsvの形式は下記
   URL,
   精度,
+  閲覧時のviewportの幅,
+  閲覧時のviewportの高さ,
   閲覧時間(msec),
   posX,posY,
   ...
@@ -158,4 +161,8 @@ window.addEventListener('beforeunload', function(e) {
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
+});
+
+$('body').on('click', function(e) {
+	console.log(e.pageX, e.pageY);
 });

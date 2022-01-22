@@ -136,6 +136,10 @@ $(document).ready(function(){
                 // 精度をcsvの配列に格納
                 csvData.push('\n'+precision_measurement);
 
+                // 閲覧時のviewportの幅と高さをcsvの配列に格納
+                csvData.push('\n'+innerWidth);
+                csvData.push('\n'+innerHeight);
+
                 // 閲覧開始時間を変数に記録
                 startTime = Date.now();
 
