@@ -130,8 +130,14 @@ $(document).ready(function(){
                 // canvasを削除
                 document.getElementById('plotting_canvas').remove();
 
-                // 精度をcsvのための配列に格納
-                // csvData[0].push(precision_measurement);
+                // サイトURLをcsvの配列に格納
+                csvData.push(location.href);
+
+                // 精度をcsvの配列に格納
+                csvData.push('\n'+precision_measurement);
+
+                // 閲覧開始時間を変数に記録
+                startTime = Date.now();
 
                 // 視線ポインタを非表示にする
                 // document.getElementById('webgazerGazeDot').classList.add('is-hide--f');
