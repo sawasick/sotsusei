@@ -144,8 +144,7 @@ window.addEventListener('beforeunload', function(e) {
   書き出すcsvの形式は下記
   URL,
   精度,
-  閲覧時のviewportの幅,
-  閲覧時のviewportの高さ,
+  閲覧時のviewportの幅,閲覧時のviewportの高さ,
   閲覧時間(msec),
   posX,posY,
   ...
