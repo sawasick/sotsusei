@@ -135,37 +135,34 @@ function AddDataToCSV(x, y) {
 
 window.addEventListener('beforeunload', function(e) {
   // csvファイルをダウンロードする
-  // TODO:キャリブレーション完了してたら条件追加する
   e.preventDefault();
-  // 閲覧時間をcsvの配列に格納
-  csvData.splice(2, 0, '\n'+(Date.now() - startTime));
-
-  // EOFをcsvの配列に追記
-  csvData.push('\n'+'EOF');
-
-  /*
-  書き出すcsvの形式は下記
-  URL,
-  精度,
-  閲覧時のviewportの幅,閲覧時のviewportの高さ,
-  閲覧時間(msec),
-  posX,posY,
-  ...
-  EOF
-
-  このままだとカンマの後に空文字列が入るので行の末尾の要素を削除する処理をする→python側で実行
-  */
-  const blob = new Blob([csvData],{type:"text/csv"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  document.body.appendChild(a);
-  a.download = 'test.csv';
-  a.href = url;
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-});
-
-$('body').on('click', function(e) {
-	console.log(e.pageX, e.pageY);
+  if (isCalibrateComplete) {
+    // 閲覧時間をcsvの配列に格納
+    csvData.splice(2, 0, '\n'+(Date.now() - startTime));
+  
+    // EOFをcsvの配列に追記
+    csvData.push('\n'+'EOF');
+  
+    /*
+    書き出すcsvの形式は下記
+    URL,
+    精度,
+    閲覧時のviewportの幅,閲覧時のviewportの高さ,
+    閲覧時間(msec),
+    posX,posY,
+    ...
+    EOF
+  
+    このままだとカンマの後に空文字列が入るので行の末尾の要素を削除する処理をする→python側で実行
+    */
+    const blob = new Blob([csvData],{type:"text/csv"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    document.body.appendChild(a);
+    a.download = 'test.csv';
+    a.href = url;
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
 });
