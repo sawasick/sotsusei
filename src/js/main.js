@@ -143,7 +143,10 @@ window.addEventListener('beforeunload', function(e) {
     // 日付をcsvの配列に追記
     const d = new Date();
     const dayname = ['日','月','火','水','木','金','土'];
-    const date = '\n'+ d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日(' + dayname[d.getDay()] + ')' + d.getHours() + '時' + d.getMinutes() + '分';
+    const month = ('0' + (d.getMonth() + 1)).slice(-2); // 頭に0をつける
+    const day = (('0' + d.getDate()).slice(-2)); // 頭に0をつける
+    const minute = (('0' + d.getMinutes()).slice(-2)); // 頭に0をつける
+    const date = '\n'+ d.getFullYear() + '年' + month + '月' + day + '日(' + dayname[d.getDay()] + ')' + d.getHours() + '時' + minute + '分';
     csvData.splice(1, 0, date);
 
     // EOFをcsvの配列に追記
