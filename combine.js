@@ -1724,12 +1724,22 @@ window.addEventListener('beforeunload', function(e) {
     // 閲覧時間をcsvの配列に格納
     csvData.splice(2, 0, '\n'+(Date.now() - startTime));
   
+    // 日付をcsvの配列に追記
+    const d = new Date();
+    const dayname = ['日','月','火','水','木','金','土'];
+    const month = ('0' + (d.getMonth() + 1)).slice(-2); // 頭に0をつける
+    const day = (('0' + d.getDate()).slice(-2)); // 頭に0をつける
+    const minute = (('0' + d.getMinutes()).slice(-2)); // 頭に0をつける
+    const date = '\n'+ d.getFullYear() + '年' + month + '月' + day + '日(' + dayname[d.getDay()] + ')' + d.getHours() + '時' + minute + '分';
+    csvData.splice(1, 0, date);
+
     // EOFをcsvの配列に追記
     csvData.push('\n'+'EOF');
   
     /*
     書き出すcsvの形式は下記
     URL,
+    日付,
     精度,
     閲覧時のviewportの幅,閲覧時のviewportの高さ,
     閲覧時間(msec),
@@ -1743,7 +1753,7 @@ window.addEventListener('beforeunload', function(e) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     document.body.appendChild(a);
-    a.download = 'test.csv';
+    a.download = 'wg'+date.replace(/[^0-9]/g, '')+'.csv';
     a.href = url;
     a.click();
     a.remove();
