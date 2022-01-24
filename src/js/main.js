@@ -169,7 +169,7 @@ window.addEventListener('beforeunload', function(e) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     document.body.appendChild(a);
-    a.download = 'test.csv';
+    a.download = 'wg'+date.replace(/[^0-9]/g, '')+'.csv';
     a.href = url;
     a.click();
     a.remove();
