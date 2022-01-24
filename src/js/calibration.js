@@ -51,18 +51,21 @@ $(document).ready(function(){
       var id = $(this).attr('id');
 
       if (!CalibrationPoints[id]){ // initialises if not done
-        CalibrationPoints[id]=0;
+        CalibrationPoints[id]=5;
       }
-      CalibrationPoints[id]++; // increments values
+      CalibrationPoints[id]--; // increments values
+      $(`#${id}`).attr('value', CalibrationPoints[id]);
 
-      if (CalibrationPoints[id]==5){ //only turn to yellow after 5 clicks
-        $(this).css('background-color','yellow');
+      if (CalibrationPoints[id]==0){ //only turn to yellow after 5 clicks
+        $(this).css('background-color','#23D91E');
+        $(this).css('border-color','#23D91E');
+        $(this).attr('value', '✔︎');
         $(this).prop('disabled', true); //disables the button
         PointCalibrate++;
-      }else if (CalibrationPoints[id]<5){
+      }else if (CalibrationPoints[id]>0){
         //Gradually increase the opacity of calibration points when click to give some indication to user.
-        var opacity = 0.2*CalibrationPoints[id]+0.2;
-        $(this).css('opacity',opacity);
+        // var opacity = 0.2*CalibrationPoints[id]+0.2;
+        // $(this).css('opacity',opacity);
       }
 
       //Show the middle calibration point after all other points have been clicked.
@@ -174,8 +177,8 @@ function ShowCalibrationPoint() {
 function ClearCalibration(){
   // Clear data from WebGazer
 
-  $(".Calibration").css('background-color','red');
-  $(".Calibration").css('opacity',0.2);
+  // $(".Calibration").css('background-color','red');
+  // $(".Calibration").css('opacity',0.2);s
   $(".Calibration").prop('disabled',false);
 
   CalibrationPoints = {};

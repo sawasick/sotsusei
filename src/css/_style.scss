@@ -24,15 +24,17 @@ body {
 
 /* Calibration button styling */
 .Calibration {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   border-radius: 25px;
-  background-color: red;
-  opacity: 0.2;
-  border-color: black;
+  background-color: #F60509;
+  // opacity: 0.2;
+  border-color: #F60509;
   border-style: solid;
   position: fixed;
   cursor:crosshair;
+  font-weight: bold;
+  color: #fff;
 }
 
 /* Calibration point position */
