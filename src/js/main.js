@@ -139,20 +139,27 @@ window.addEventListener('beforeunload', function(e) {
   if (isCalibrateComplete) {
     // 閲覧時間をcsvの配列に格納
     csvData.splice(2, 0, '\n'+(Date.now() - startTime));
-  
+
+    // 日付をcsvの配列に追記
+    const d = new Date();
+    const dayname = ['日','月','火','水','木','金','土'];
+    const date = '\n'+ d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日(' + dayname[d.getDay()] + ')' + d.getHours() + '時' + d.getMinutes() + '分';
+    csvData.splice(1, 0, date);
+
     // EOFをcsvの配列に追記
     csvData.push('\n'+'EOF');
-  
+
     /*
     書き出すcsvの形式は下記
     URL,
+    日付,
     精度,
-    閲覧時のviewportの幅,閲覧時のviewportの高さ,
     閲覧時間(msec),
+    閲覧時のviewportの幅,閲覧時のviewportの高さ,
     posX,posY,
     ...
     EOF
-  
+
     このままだとカンマの後に空文字列が入るので行の末尾の要素を削除する処理をする→python側で実行
     */
     const blob = new Blob([csvData],{type:"text/csv"});
