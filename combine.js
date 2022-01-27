@@ -1598,8 +1598,10 @@ window.onload = async function() {
           //   ActionToElement(GetElementOnGaze(data.x, data.y));
           // }
           if(data != null && isCalibrateComplete == true) {
-            AddDataToCSV(data.x + window.pageXOffset, data.y + window.pageYOffset);
-            // console.log(data.x, data.y);
+            if (CompareElem(data.x, data.y)) {
+              AddDataToCSV(data.x + window.pageXOffset, data.y + window.pageYOffset);
+              // console.log(data.x, data.y);
+            }
           }
             // console.log(data); /* data is an object containing an x and y key which are the x and y prediction coordinates (no bounds limiting) */
             // console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
@@ -1685,6 +1687,24 @@ function CancelCalibration() {
 // 視線上(赤いドット)の要素を取得
 function GetElementOnGaze(x, y) {
     return document.elementFromPoint(x, y);
+}
+
+// 視線上(赤いドット)の要素が1フレーム前の要素と同じか比較
+function CompareElem(x, y) {
+  var elem = document.elementFromPoint(x, y);
+  console.log(elem);
+  if (elem != null) {
+    if (pElem == null) {
+      pElem = elem;
+    }
+    // 前フレームで見た要素と違うなら
+    if (elem != pElem) {
+      console.log('↑と↓はちゃう');
+      pElem = elem;
+      return false
+    }
+  }
+  return true
 }
 
 // 要素にアクションをする
