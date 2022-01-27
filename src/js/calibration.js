@@ -32,13 +32,6 @@ function PopUpUsage() {
 }
 
 /**
-  * Show the help instructions right at the start.
-  */
-// function helpModalShow() {
-//     $('#helpModal').modal('show');
-// }
-
-/**
  * Load this function when the index page starts.
 * This function listens for button clicks on the html page
 * checks that all buttons have been clicked 5 times each, and then goes on to measuring the precision

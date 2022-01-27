@@ -8,7 +8,6 @@ window.onload = async function() {
     webgazer.params.showVideoPreview = true;
     //start the webgazer tracker
     await webgazer.setRegression('ridge') /* currently must set regression and tracker */
-        //.setTracker('clmtrackr')
         .setGazeListener(function(data, clock) {
           // if(data != null && isCalibrate == false) {
           //   ActionToElement(GetElementOnGaze(data.x, data.y));
@@ -54,7 +53,6 @@ function Restart(){
     document.getElementById("Accuracy").textContent = "キャリブレーションは完了していません";
     webgazer.clearData();
     ClearCalibration();
-    // PopUpInstruction();
     PopUpUsage();
     CalibrationStart();
 
@@ -108,14 +106,12 @@ function GetElementOnGaze(x, y) {
 // 視線上(赤いドット)の要素が1フレーム前の要素と同じか比較
 function CompareElem(x, y) {
   var elem = document.elementFromPoint(x, y);
-  console.log(elem);
   if (elem != null) {
     if (pElem == null) {
       pElem = elem;
     }
     // 前フレームで見た要素と違うなら
     if (elem != pElem) {
-      console.log('↑と↓はちゃう');
       pElem = elem;
       return false
     }
