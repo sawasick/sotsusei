@@ -140,6 +140,9 @@ $(document).ready(function(){
 
                 // 視線ポインタを非表示にする
                 // document.getElementById('webgazerGazeDot').classList.add('is-hide--f');
+
+                // 視線ポインタに枠を表示させる
+                $('#webgazerGazeDot span').addClass('webgazerGazeDot-frame');
               });
               $('#js-pop-result-btn-cancel').on('click', function(){
                 // 再キャリブレーション
