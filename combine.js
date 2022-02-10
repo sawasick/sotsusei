@@ -9,6 +9,7 @@ const $elem = `
 <div class="debugInfo">
   <p id="Accuracy" class="accuracy">キャリブレーションは完了していません</p>
   <p id="CalibrateStatus" class="status">キャリブレーションステータス</p>
+  <button type="button" id="pointerDisplay" class="pointerDisplay">視線上の点: 表示</button>
 </div>
 <!-- Calibration points -->
 <div id="calibrationDiv" class="calibrationDiv">
@@ -1446,6 +1447,18 @@ function CancelCalibration() {
   document.body.classList.remove('is-hidden');
   document.getElementById('helpModal').remove();
 }
+$('#pointerDisplay').on('click', function() {
+  if (isPointerDisplay) {
+    $('#webgazerGazeDot').addClass('is-hide--f');
+    $(this).html('視線上の点: 非表示');
+    isPointerDisplay = false;
+  }
+  else {
+    $('#webgazerGazeDot').removeClass('is-hide--f');
+    $(this).html('視線上の点: 表示');
+    isPointerDisplay = true;
+  }
+});
 function GetElementOnGaze(x, y) {
     return document.elementFromPoint(x, y);
 }

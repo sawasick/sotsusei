@@ -3,6 +3,7 @@ var isCalibrateComplete = false;
 var pElem; // 1フレーム前に注視していた要素
 const csvData = [];
 var startTime = null;
+var isPointerDisplay = true; // 視線上のポインタを表示するかどうか
 window.onload = async function() {
 
     webgazer.params.showVideoPreview = true;
@@ -97,6 +98,20 @@ function CancelCalibration() {
   // モーダルの削除
   document.getElementById('helpModal').remove();
 }
+
+// 視線上のポインタの表示を切り替える
+$('#pointerDisplay').on('click', function() {
+  if (isPointerDisplay) {
+    $('#webgazerGazeDot').addClass('is-hide--f');
+    $(this).html('視線上の点: 非表示');
+    isPointerDisplay = false;
+  }
+  else {
+    $('#webgazerGazeDot').removeClass('is-hide--f');
+    $(this).html('視線上の点: 表示');
+    isPointerDisplay = true;
+  }
+});
 
 // 視線上(赤いドット)の要素を取得
 function GetElementOnGaze(x, y) {

@@ -4,6 +4,7 @@ const $elem = `
 <div class="debugInfo">
   <p id="Accuracy" class="accuracy">キャリブレーションは完了していません</p>
   <p id="CalibrateStatus" class="status">キャリブレーションステータス</p>
+  <button type="button" id="pointerDisplay" class="pointerDisplay">視線上の点: 表示</button>
 </div>
 <!-- Calibration points -->
 <div id="calibrationDiv" class="calibrationDiv">
