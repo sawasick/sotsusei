@@ -9,19 +9,18 @@ const $elem = `
 <div class="debugInfo">
   <p id="Accuracy" class="accuracy">キャリブレーションは完了していません</p>
   <p id="CalibrateStatus" class="status">キャリブレーションステータス</p>
-  <p id="GazingElement" class="gazing">注視している要素 : </p>
 </div>
 <!-- Calibration points -->
 <div id="calibrationDiv" class="calibrationDiv">
-  <input type="button" class="Calibration" id="Pt1"></input>
-  <input type="button" class="Calibration" id="Pt2"></input>
-  <input type="button" class="Calibration" id="Pt3"></input>
-  <input type="button" class="Calibration" id="Pt4"></input>
-  <input type="button" class="Calibration" id="Pt5"></input>
-  <input type="button" class="Calibration" id="Pt6"></input>
-  <input type="button" class="Calibration" id="Pt7"></input>
-  <input type="button" class="Calibration" id="Pt8"></input>
-  <input type="button" class="Calibration" id="Pt9"></input>
+  <button type="button" class="Calibration" id="Pt1">5</button>
+  <button type="button" class="Calibration" id="Pt2">5</button>
+  <button type="button" class="Calibration" id="Pt3">5</button>
+  <button type="button" class="Calibration" id="Pt4">5</button>
+  <button type="button" class="Calibration" id="Pt5">5</button>
+  <button type="button" class="Calibration" id="Pt6">5</button>
+  <button type="button" class="Calibration" id="Pt7">5</button>
+  <button type="button" class="Calibration" id="Pt8">5</button>
+  <button type="button" class="Calibration" id="Pt9">5</button>
 </div>
 
 <div id="helpModal" class="pop-overlay">
@@ -1541,10 +1540,11 @@ $(document).ready(function(){
         CalibrationPoints[id]=5;
       }
       CalibrationPoints[id]--;
+      $(`#${id}`).html(CalibrationPoints[id]);
       if (CalibrationPoints[id]==0){
         $(this).css('background-color','#23D91E');
         $(this).css('border-color','#23D91E');
-        $(this).attr('value', '✔︎');
+        $(this).html('&#10004;');
         $(this).prop('disabled', true);
         PointCalibrate++;
       }

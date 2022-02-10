@@ -4,19 +4,18 @@ const $elem = `
 <div class="debugInfo">
   <p id="Accuracy" class="accuracy">キャリブレーションは完了していません</p>
   <p id="CalibrateStatus" class="status">キャリブレーションステータス</p>
-  <p id="GazingElement" class="gazing">注視している要素 : </p>
 </div>
 <!-- Calibration points -->
 <div id="calibrationDiv" class="calibrationDiv">
-  <input type="button" class="Calibration" id="Pt1" value="5"></input>
-  <input type="button" class="Calibration" id="Pt2" value="5"></input>
-  <input type="button" class="Calibration" id="Pt3" value="5"></input>
-  <input type="button" class="Calibration" id="Pt4" value="5"></input>
-  <input type="button" class="Calibration" id="Pt5" value="5"></input>
-  <input type="button" class="Calibration" id="Pt6" value="5"></input>
-  <input type="button" class="Calibration" id="Pt7" value="5"></input>
-  <input type="button" class="Calibration" id="Pt8" value="5"></input>
-  <input type="button" class="Calibration" id="Pt9" value="5"></input>
+  <button type="button" class="Calibration" id="Pt1">5</button>
+  <button type="button" class="Calibration" id="Pt2">5</button>
+  <button type="button" class="Calibration" id="Pt3">5</button>
+  <button type="button" class="Calibration" id="Pt4">5</button>
+  <button type="button" class="Calibration" id="Pt5">5</button>
+  <button type="button" class="Calibration" id="Pt6">5</button>
+  <button type="button" class="Calibration" id="Pt7">5</button>
+  <button type="button" class="Calibration" id="Pt8">5</button>
+  <button type="button" class="Calibration" id="Pt9">5</button>
 </div>
 
 <div id="helpModal" class="pop-overlay">

@@ -47,12 +47,12 @@ $(document).ready(function(){
         CalibrationPoints[id]=5;
       }
       CalibrationPoints[id]--; // increments values
-      $(`#${id}`).attr('value', CalibrationPoints[id]);
+      $(`#${id}`).html(CalibrationPoints[id]);
 
       if (CalibrationPoints[id]==0){ //only turn to yellow after 5 clicks
         $(this).css('background-color','#23D91E');
         $(this).css('border-color','#23D91E');
-        $(this).attr('value', '✔︎');
+        $(this).html('&#10004;');
         $(this).prop('disabled', true); //disables the button
         PointCalibrate++;
       }else if (CalibrationPoints[id]>0){
