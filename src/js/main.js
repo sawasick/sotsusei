@@ -1,10 +1,12 @@
 var isCalibrate = false;
 var isCalibrateComplete = false;
 var pElem; // 1フレーム前に注視していた要素
+var ppElem;
 const csvData = [];
 var startTime = null;
 var isPointerDisplay = true; // 視線上のポインタを表示するかどうか
 var isActionBackGround = false; // 視線上の要素の背景色にアクションするかどうか
+var isActionFontSize = false;  // 視線上の要素の文字サイズにアクションするかどうか
 window.onload = async function() {
 
     webgazer.params.showVideoPreview = true;
@@ -27,7 +29,10 @@ window.onload = async function() {
               if (isActionBackGround) {
                 ActionToBackGround('diff', GetElementOnGaze(data.x, data.y));
               }
-              pElem = GetElementOnGaze(data.x, data.y);
+              if (isActionFontSize) {
+                ActionToFontSize(GetElementOnGaze(data.x, data.y));
+              }
+              pElem = ppElem;
             }
 
           }
@@ -139,6 +144,7 @@ function CompareElem(x, y) {
     }
     // 前フレームで見た要素と違うなら
     if (elem != pElem) {
+      ppElem = elem;
       return false
     }
   }
@@ -170,6 +176,24 @@ function ActionToBackGround(command, elem) {
       pElem.removeAttribute('class');
     }
   }
+}
+
+// 視線上の要素の文字サイズにアクションをするスイッチ
+$('#switchFs').on('click', function() {
+  if (isActionFontSize) {
+    $(this).html('文字サイズにアクション: OFF');
+    isActionFontSize = false;
+  }
+  else {
+    $(this).html('文字サイズにアクション: ON');
+    isActionFontSize = true;
+  }
+});
+
+// 視線上の要素の文字サイズにアクションをする
+function ActionToFontSize(elem) {
+  $(elem).css('font-size', '+=10');
+  $(pElem).css('font-size', '-=10');
 }
 
 function AddDataToCSV(x, y) {

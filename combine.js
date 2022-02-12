@@ -10,6 +10,7 @@ const $elem = `
   <p id="Accuracy" class="accuracy">キャリブレーションは完了していません</p>
   <p id="CalibrateStatus" class="status">キャリブレーションステータス</p>
   <button type="button" id="pointerDisplay" class="pointerDisplay">視線上の点: 表示</button>
+  <button type="button" id="switchFs" class="switchFs">文字サイズにアクション: OFF</button>
 </div>
 <!-- Calibration points -->
 <div id="calibrationDiv" class="calibrationDiv">
@@ -1390,6 +1391,7 @@ const _="3.5.0";
 var isCalibrate = false;
 var isCalibrateComplete = false;
 var pElem;
+var ppElem;
 const csvData = [];
 var startTime = null;
 var isPointerDisplay = true;
@@ -1406,10 +1408,13 @@ window.onload = async function() {
               }
             }
             else{
-              if(isActionBackGround) {
+              if(isActionBackGround){
                 ActionToBackGround('diff',GetElementOnGaze(data.x,data.y));
               }
-              pElem=GetElementOnGaze(data.x,data.y);
+              if(isActionFontSize){
+                ActionToFontSize(GetElementOnGaze(data.x,data.y));
+              }
+              pElem=ppElem;
             }
           }
         })
@@ -1480,6 +1485,7 @@ function CompareElem(x, y) {
       pElem = elem;
     }
     if (elem != pElem) {
+      ppElem=elem;
       return false
     }
   }
@@ -1523,6 +1529,20 @@ function ActionToBackGround(command,elem){
       pElem.removeAttribute('class');
     }
   }
+}
+$('#switchFs').on('click',function(){
+  if(isActionFontSize){
+    $(this).html('文字サイズにアクション: OFF');
+    isActionFontSize=false;
+  }
+  else{
+    $(this).html('文字サイズにアクション: ON');
+    isActionFontSize=true;
+  }
+});
+function ActionToFontSize(elem){
+  $(elem).css('font-size','+=10');
+  $(pElem).css('font-size','-=10');
 }
 function AddDataToCSV(x, y) {
   csvData.push('\n'+Math.round(x)+','+Math.round(y));

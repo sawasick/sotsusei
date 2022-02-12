@@ -6,6 +6,7 @@ const $elem = `
   <p id="CalibrateStatus" class="status">キャリブレーションステータス</p>
   <button type="button" id="pointerDisplay" class="pointerDisplay">視線上の点: 表示</button>
   <button type="button" id="switchBg" class="switchBg">背景色にアクション: OFF</button>
+  <button type="button" id="switchFs" class="switchFs">文字サイズにアクション: OFF</button>
 </div>
 <!-- Calibration points -->
 <div id="calibrationDiv" class="calibrationDiv">
