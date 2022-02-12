@@ -4,6 +4,7 @@ var pElem; // 1フレーム前に注視していた要素
 const csvData = [];
 var startTime = null;
 var isPointerDisplay = true; // 視線上のポインタを表示するかどうか
+var isActionBackGround = false; // 視線上の要素の背景色にアクションするかどうか
 window.onload = async function() {
 
     webgazer.params.showVideoPreview = true;
@@ -17,7 +18,18 @@ window.onload = async function() {
             if (CompareElem(data.x, data.y)) {
               AddDataToCSV(data.x + window.pageXOffset, data.y + window.pageYOffset);
               // console.log(data.x, data.y);
+
+              if (isActionBackGround) {
+                ActionToBackGround('same', GetElementOnGaze(data.x, data.y));
+              }
             }
+            else {
+              if (isActionBackGround) {
+                ActionToBackGround('diff', GetElementOnGaze(data.x, data.y));
+              }
+              pElem = GetElementOnGaze(data.x, data.y);
+            }
+
           }
             // console.log(data); /* data is an object containing an x and y key which are the x and y prediction coordinates (no bounds limiting) */
             // console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
@@ -127,35 +139,35 @@ function CompareElem(x, y) {
     }
     // 前フレームで見た要素と違うなら
     if (elem != pElem) {
-      pElem = elem;
       return false
     }
   }
   return true
 }
 
-// 要素にアクションをする
-/* アクションしたい要素に'wg-target'属性を付与する */
-function ActionToElement(e) {
-  var elem = e;
-  document.getElementById('GazingElement').textContent = '注視している要素 :'+elem;
-  if (elem != null) {
-    if (pElem == null) {
-      pElem = elem;
-    }
-    // 注視している要素がアクション対象なら
-    // if(elem.hasAttribute('wg-target')) {
-      elem.classList.add('action');
-    // }
+// 視線上の要素の背景色にアクションをするスイッチ
+$('#switchBg').on('click', function() {
+  if (isActionBackGround) {
+    $(this).html('背景色にアクション: OFF');
+    isActionBackGround = false;
+  }
+  else {
+    $(this).html('背景色にアクション: ON');
+    isActionBackGround = true;
+  }
+});
 
-    // 前フレームで見た要素と違うなら
-    if (elem != pElem) {
-      pElem.classList.remove('action');
-      // pElemのclassが1つもないならclass属性も削除
-      if (pElem.classList.length == 0) {
-        pElem.removeAttribute('class');
-      }
-      pElem = elem;
+// 視線上の要素の背景色にアクションをする
+function ActionToBackGround(command, elem) {
+  if (command === 'same') {
+    $(elem).addClass('action-bg');
+  }
+  else {
+    $(elem).addClass('action-bg');
+    $(pElem).removeClass('action-bg');
+    // pElemのclassが1つもないならclass属性も削除
+    if (pElem.classList.length == 0) {
+      pElem.removeAttribute('class');
     }
   }
 }
@@ -206,4 +218,14 @@ window.addEventListener('beforeunload', function(e) {
     a.remove();
     URL.revokeObjectURL(url);
   }
+});
+
+
+// 要素内にマウスが入ったら文字サイズ+10
+$('p').on('mouseenter', function() {
+  $(this).css('font-size', '+=10');
+});
+// 要素内からマウスが出ていったら文字サイズ-10
+$('p').on('mouseleave', function() {
+  $(this).css('font-size', '-=10');
 });
