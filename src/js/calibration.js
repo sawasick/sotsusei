@@ -19,7 +19,7 @@ function PopUpUsage() {
   <div id="js-pop-usage" class="pop-overlay">
     <div class="pop-modal">
     <p class="pop-title">キャリブレーションのやり方</p>
-    <p class="pop-text">画面上の8つの点をそれぞれ見つめながら5回ずつクリックしてください。<br>点が黄色になったらクリック完了です。<br>8つの点をクリックし終えたら中心にもう1つ点が表示されるので同様に5回クリックしてください。</p>
+    <p class="pop-text">画面上の8つの点をそれぞれ見つめながら5回ずつクリックしてください。<br>点が<span class="PtSample">&#10004;</span>になったらクリック完了です。<br>8つの点をクリックし終えたら中心にもう1つ点が表示されるので同様に5回クリックしてください。</p>
     <button id="js-pop-usage-btn" class="pop-btn" type="submit">OK</button>
     </div>
   </div>
@@ -50,8 +50,7 @@ $(document).ready(function(){
       $(`#${id}`).html(CalibrationPoints[id]);
 
       if (CalibrationPoints[id]==0){ //only turn to yellow after 5 clicks
-        $(this).css('background-color','#23D91E');
-        $(this).css('border-color','#23D91E');
+        $(this).addClass('PtComplete');
         $(this).html('&#10004;');
         $(this).prop('disabled', true); //disables the button
         PointCalibrate++;

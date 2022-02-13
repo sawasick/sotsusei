@@ -4,7 +4,7 @@
 
 /* add.js */
 const $elem = `
-<style>body{min-width:600px !important}.webgazerVideoContainer{display:block;position:fixed !important;top:0px !important;left:0px !important;width:320px !important;height:240px !important;z-index:10000}.calibrationDiv{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,.8);z-index:9999}.Calibration{width:26px;height:26px;border-radius:25px;background-color:#f60509;border-color:#f60509;border-style:solid;position:fixed;cursor:crosshair;font-weight:bold;color:#fff}#Pt1{top:70px;left:340px}#Pt2{top:70px;left:50vw}#Pt3{top:70px;right:2vw}#Pt4{top:50vh;left:2vw}#Pt5{top:50vh;left:50vw}#Pt6{top:50vh;right:2vw}#Pt7{bottom:2vw;left:2vw}#Pt8{bottom:2vw;left:50vw}#Pt9{bottom:2vw;right:2vw}.debugInfo{position:fixed;top:0;left:320px;z-index:100000}.debugInfo ul{display:flex}.debugInfo ul:first-child{margin-bottom:5px}.debugInfo li{margin-right:10px}.debugInfo button{background:#ff7f00;color:#fff;border:none;border-radius:5px;padding:4px}.accuracy{background-color:#222 !important;color:#fff}.status{background-color:#222 !important;color:#fff}.gazing{background-color:#222 !important;color:#fff}.is-hidden{overflow:hidden}.is-hide{display:none}.is-hide--f{display:none !important}.action{background-color:#ff0}.webgazerGazeDot{display:block;position:fixed;z-index:99999;left:-5px;top:-5px;width:10px;height:10px;opacity:.7;background:red;border-radius:100%}.webgazerGazeDot-frame{display:block;width:60px;height:40px;border:2px solid blue;position:absolute;top:-15px;left:-25px;opacity:.7}.pop-overlay{position:fixed;top:0;bottom:0;left:0;right:0;background-color:rgba(0,0,0,.4);z-index:10000;display:flex;align-items:center;justify-content:center}.pop-modal{width:500px;background-color:#fff;text-align:center;border-radius:5px;z-index:10001}@media screen and (max-width: 480px){.pop-modal{width:300px}}.pop-modal button:disabled{opacity:.6}.pop-title{color:#333;font-weight:bold;font-size:27px;margin:0;padding:10px 0}@media screen and (max-width: 480px){.pop-title{font-size:18px;padding:8px 0}}.pop-text{font-size:18px;color:#222;width:82%;margin:0 auto;padding:10px 0;text-align:left}@media screen and (max-width: 480px){.pop-text{font-size:14px;width:84%;line-height:2;padding:8px 0}}.pop-btn{width:65px;height:45px;font-weight:bold;color:#fff;background-color:#007bff;border:none;border-radius:7px;position:relative;left:180px;margin-bottom:12px;cursor:pointer}@media screen and (max-width: 480px){.pop-btn{left:90px}}.action-bg{background-color:rgba(255,128,0,.5) !important}</style>
+<style>body{min-width:600px !important}.webgazerVideoContainer{display:block;position:fixed !important;top:0px !important;left:0px !important;width:320px !important;height:240px !important;z-index:10000}.calibrationDiv{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,.8);z-index:9999}.Calibration{width:26px;height:26px;border-radius:25px;background-color:#f60509;border-color:#f60509;border-style:solid;position:fixed;cursor:crosshair;font-weight:bold;color:#fff}#Pt1{top:70px;left:340px}#Pt2{top:70px;left:50vw}#Pt3{top:70px;right:2vw}#Pt4{top:50vh;left:2vw}#Pt5{top:50vh;left:50vw}#Pt6{top:50vh;right:2vw}#Pt7{bottom:2vw;left:2vw}#Pt8{bottom:2vw;left:50vw}#Pt9{bottom:2vw;right:2vw}.PtComplete{background-color:#23d91e;border-color:#23d91e}.PtSample{width:22px;height:22px;border-radius:22px;background-color:#23d91e;border-color:#23d91e;font-weight:bold;color:#fff;line-height:1;padding:1.5px 0 0px 3px;display:inline-block}.debugInfo{position:fixed;top:0;left:320px;z-index:100000}.debugInfo ul{display:flex}.debugInfo ul:first-child{margin-bottom:5px}.debugInfo li{margin-right:10px}.debugInfo button{background:#ff7f00;color:#fff;border:none;border-radius:5px;padding:4px}.accuracy{background-color:#222 !important;color:#fff}.status{background-color:#222 !important;color:#fff}.gazing{background-color:#222 !important;color:#fff}.is-hidden{overflow:hidden}.is-hide{display:none}.is-hide--f{display:none !important}.action{background-color:#ff0}.webgazerGazeDot{display:block;position:fixed;z-index:99999;left:-5px;top:-5px;width:10px;height:10px;opacity:.7;background:red;border-radius:100%}.webgazerGazeDot-frame{display:block;width:60px;height:40px;border:2px solid blue;position:absolute;top:-15px;left:-25px;opacity:.7}.action-bg{background-color:rgba(255,128,0,.5) !important}.pop-overlay{position:fixed;top:0;bottom:0;left:0;right:0;background-color:rgba(0,0,0,.4);z-index:10000;display:flex;align-items:center;justify-content:center}.pop-modal{width:500px;background-color:#fff;text-align:center;border-radius:5px;z-index:10001}@media screen and (max-width: 480px){.pop-modal{width:300px}}.pop-modal button:disabled{opacity:.6}.pop-title{color:#333;font-weight:bold;font-size:27px;margin:0;padding:10px 0}@media screen and (max-width: 480px){.pop-title{font-size:18px;padding:8px 0}}.pop-text{font-size:18px;color:#222;width:82%;margin:0 auto;padding:10px 0;text-align:left}@media screen and (max-width: 480px){.pop-text{font-size:14px;width:84%;line-height:2;padding:8px 0}}.pop-btn{width:65px;height:45px;font-weight:bold;color:#fff;background-color:#007bff;border:none;border-radius:7px;position:relative;left:180px;margin-bottom:12px;cursor:pointer}@media screen and (max-width: 480px){.pop-btn{left:90px}}</style>
 <canvas id="plotting_canvas" width="500" height="500" style="cursor:crosshair;"></canvas>
 <div class="debugInfo">
   <ul>
@@ -38,7 +38,9 @@ const $elem = `
 
 <div id="helpModal" class="pop-overlay">
   <div class="pop-modal">
-    <img src="../../image/calibration.png" width="100%" height="100%" alt="webgazer demo instructions">
+    <p class="pop-title">WebGazer+</p>
+    <p class="pop-text">本制作ではPCのwebカメラを使用して視線のトラッキングが行えます。</p>
+    <p class="pop-text">トラッキングデータに対してインタラクションやデータ分析が可能です。</p>
     <button id="closeBtn" class="pop-btn" onclick="CancelCalibration()" disabled>閉じる</button>
     <button id="start_calibration" class="pop-btn" onclick="Restart()" disabled>始める</button>
   </div>
@@ -1596,7 +1598,7 @@ function PopUpUsage() {
   <div id="js-pop-usage" class="pop-overlay">
     <div class="pop-modal">
     <p class="pop-title">キャリブレーションのやり方</p>
-    <p class="pop-text">画面上の8つの点をそれぞれ見つめながら5回ずつクリックしてください。<br>点が黄色になったらクリック完了です。<br>8つの点をクリックし終えたら中心にもう1つ点が表示されるので同様に5回クリックしてください。</p>
+    <p class="pop-text">画面上の8つの点をそれぞれ見つめながら5回ずつクリックしてください。<br>点が<span class="PtSample">&#10004;</span>になったらクリック完了です。<br>8つの点をクリックし終えたら中心にもう1つ点が表示されるので同様に5回クリックしてください。</p>
     <button id="js-pop-usage-btn" class="pop-btn" type="submit">OK</button>
     </div>
   </div>
@@ -1618,8 +1620,7 @@ $(document).ready(function(){
       CalibrationPoints[id]--;
       $(`#${id}`).html(CalibrationPoints[id]);
       if (CalibrationPoints[id]==0){
-        $(this).css('background-color','#23D91E');
-        $(this).css('border-color','#23D91E');
+        $(this).addClass('PtComplete');
         $(this).html('&#10004;');
         $(this).prop('disabled', true);
         PointCalibrate++;
