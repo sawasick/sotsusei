@@ -1409,6 +1409,7 @@ const csvData = [];
 var startTime = null;
 var isPointerDisplay = true;
 var isActionBackGround = false;
+var isActionFontSize = false;
 window.onload = async function() {
     webgazer.params.showVideoPreview = true;
     await webgazer.setRegression('ridge')
