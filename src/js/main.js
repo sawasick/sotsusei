@@ -243,13 +243,3 @@ window.addEventListener('beforeunload', function(e) {
     URL.revokeObjectURL(url);
   }
 });
-
-
-// 要素内にマウスが入ったら文字サイズ+10
-$('p').on('mouseenter', function() {
-  $(this).css('font-size', '+=10');
-});
-// 要素内からマウスが出ていったら文字サイズ-10
-$('p').on('mouseleave', function() {
-  $(this).css('font-size', '-=10');
-});

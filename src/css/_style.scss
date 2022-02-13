@@ -88,19 +88,36 @@ body {
   position: fixed;
   top: 0;
   left: 320px;
-  display: flex;
   z-index: 99999;
+
+  ul {
+    display: flex;
+
+    &:first-child {
+      margin-bottom: 5px;
+    }
+  }
+
+  li {
+    margin-right: 10px;
+  }
+
+  button {
+    background: #ff7f00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+  }
 }
 .accuracy {
   background-color: #222 !important;
   color: #fff;
-  margin-right: 10px;
 }
 
 .status {
   background-color: #222 !important;
   color: #fff;
-  margin-right: 10px;
 }
 
 .gazing {
